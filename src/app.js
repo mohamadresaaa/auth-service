@@ -1,4 +1,5 @@
 import { createServer } from "http"
+import { json, urlencoded } from "body-parser"
 import express from "express"
 import helmet from "helmet"
 
@@ -18,5 +19,7 @@ export default class App {
 
     configuration() {
         this.app.use(helmet())
+        this.app.use(json())
+        this.app.use(urlencoded({ extended: true }))
     }
 }
