@@ -1,6 +1,6 @@
 import { createServer } from "http"
 import express from "express"
-
+import helmet from "helmet"
 
 export default class App {
     constructor() {
@@ -14,5 +14,9 @@ export default class App {
     setupExpress() {
         const server = createServer(this.app)
         server.listen(3000, () =>  console.log("Server running on port 3000"))
+    }
+
+    configuration() {
+        this.app.use(helmet())
     }
 }
