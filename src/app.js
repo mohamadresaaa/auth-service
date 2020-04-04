@@ -1,5 +1,6 @@
 import { createServer } from "http"
 import { json, urlencoded } from "body-parser"
+import cors from "cors"
 import express from "express"
 import helmet from "helmet"
 
@@ -19,6 +20,11 @@ export default class App {
 
     configuration() {
         this.app.use(helmet())
+        this.app.use(cors({
+			credentials: true,
+			methods: "GET, POST, PUT, DELETE",
+			origin: "*"
+		}))
         this.app.use(json())
         this.app.use(urlencoded({ extended: true }))
     }
