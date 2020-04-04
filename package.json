@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/mohamadresaaa/jraw-auth-service/issues"
   },
-  "homepage": "https://github.com/mohamadresaaa/jraw-auth-service#readme"
+  "homepage": "https://github.com/mohamadresaaa/jraw-auth-service#readme",
+  "devDependencies": {
+    "babel-watch": "^7.0.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/polyfill": "^7.8.7",
+    "@babel/preset-env": "^7.9.0",
+    "babel-plugin-module-resolver": "^4.0.0"
+  }
 }
