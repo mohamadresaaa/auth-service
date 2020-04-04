@@ -1,9 +1,11 @@
-FROM node:12
+FROM node:latest
 
-COPY . /opt/app
+RUN mkdir auth-service
 
-WORKDIR /opt/app
+ADD . /auth-service
+
+WORKDIR /auth-service
 
 RUN npm install
 
-CMD npm run watch
+CMD ["npm", "run", "watch"]
