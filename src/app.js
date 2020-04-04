@@ -4,6 +4,7 @@ import cors from "cors"
 import express from "express"
 import helmet from "helmet"
 import mongoose from "mongoose"
+import morgan from "morgan"
 
 export default class App {
     constructor() {
@@ -42,5 +43,9 @@ export default class App {
         this.app.use(urlencoded({
             extended: true
         }))
+
+        if(process.env.NODE_ENV === "development") {
+            this.app.use(morgan("dev"))
+        }
     }
 }
