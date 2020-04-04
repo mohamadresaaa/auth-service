@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "babel-watch -L src"
+    "watch": "babel-watch -L src",
+    "lint": "npx eslint --fix ./"
   },
   "repository": {
     "type": "git",
