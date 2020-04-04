@@ -44,7 +44,7 @@ export default class App {
             extended: true
         }))
 
-        if(process.env.NODE_ENV === "development") {
+        if (process.env.NODE_ENV !== "production") {
             this.app.use(morgan("dev"))
         }
     }
