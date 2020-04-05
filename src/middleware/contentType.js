@@ -1,7 +1,6 @@
-
 import { ErrorMessage } from "../lib/messages"
 
-/** Just allow application/json content type
+/** Just allow application/json accepts
  * @param req
  * @param res
  * @param next
