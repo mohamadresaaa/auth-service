@@ -1,6 +1,7 @@
 import { apiError404, apiErrorHandler } from "./middleware/errorHandle"
 import { createServer } from "http"
 import { json, urlencoded } from "body-parser"
+import contentType from "./middleware/contentType"
 import cors from "cors"
 import express from "express"
 import helmet from "helmet"
@@ -45,6 +46,7 @@ export default class App {
 		this.app.use(urlencoded({
 			extended: true
 		}))
+		this.app.use(contentType)
 
 		if (process.env.NODE_ENV !== "production") {
 			this.app.use(morgan("dev"))
