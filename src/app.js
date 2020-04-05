@@ -14,6 +14,9 @@ export default class App {
 		this.app = express()
 	}
 
+	/** Run all methods
+	 * @public
+	 */
 	initialize() {
 		this.setupExpress()
 		this.setupMongodb()
@@ -21,11 +24,19 @@ export default class App {
 		this.setupRoutes()
 	}
 
+	/** Setup server with express
+	 * @private
+	 * @package http, express
+	 */
 	setupExpress() {
 		const server = createServer(this.app)
 		server.listen(config.port, () => console.log(`Server running on port ${config.port}`))
 	}
 
+	/** Setup mongodb and set config
+	 * @private
+	 * @package mongoose
+	 */
 	setupMongodb() {
 		mongoose.Promise = global.Promise
 		mongoose.connect("", {
@@ -36,6 +47,10 @@ export default class App {
 		})
 	}
 
+	/** Setup and using packages
+	 * @private
+	 * @package helmet, cors, body-parser, contentType, morgan
+	 */
 	configuration() {
 		this.app.use(helmet())
 		this.app.use(cors({
@@ -54,6 +69,9 @@ export default class App {
 		}
 	}
 
+	/** Import routes and errors management
+	 * @private
+	 */
 	setupRoutes() {
 		this.app.use(routes)
 		this.app.use("*", apiError404)
