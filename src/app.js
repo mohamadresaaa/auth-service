@@ -7,6 +7,7 @@ import express from "express"
 import helmet from "helmet"
 import mongoose from "mongoose"
 import morgan from "morgan"
+import routes from "./routes"
 
 export default class App {
 	constructor() {
@@ -54,6 +55,7 @@ export default class App {
 	}
 
 	setupRoutes() {
+		this.app.use(routes)
 		this.app.use("*", apiError404)
 		this.app.use(apiErrorHandler)
 	}
