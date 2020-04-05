@@ -1,3 +1,4 @@
+import { apiError404, apiErrorHandler } from "./middleware/errorHandle"
 import { createServer } from "http"
 import { json, urlencoded } from "body-parser"
 import cors from "cors"
@@ -15,6 +16,7 @@ export default class App {
 		this.setupExpress()
 		this.setupMongodb()
 		this.configuration()
+		this.setupRoutes()
 	}
 
 	setupExpress() {
@@ -47,5 +49,10 @@ export default class App {
 		if (process.env.NODE_ENV !== "production") {
 			this.app.use(morgan("dev"))
 		}
+	}
+
+	setupRoutes() {
+		this.app.use("*", apiError404)
+		this.app.use(apiErrorHandler)
 	}
 }
