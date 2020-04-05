@@ -1,7 +1,9 @@
 const router = require("express").Router()
 
-router.get("/", (req, res) => {
-	res.send("auth service")
-})
+// Importing routes
+import auth from "./auth"
+
+// Using routes
+router.use("/auth", auth)
 
 module.exports = router
