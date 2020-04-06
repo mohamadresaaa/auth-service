@@ -1,5 +1,9 @@
+const autoBind = require("auto-bind")
+
 module.exports = class BaseController {
 	constructor () {
+		// Binding methods for using on child classes
+		autoBind(this)
 	}
 
 	/** Show public info message
