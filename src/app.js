@@ -16,7 +16,7 @@ const setupExpress = Symbol("Express installation")
 const setupMongodb = Symbol("Mongodb installation and configuration")
 const setupRoutes = Symbol("Setup server routes")
 
-export default class App {
+module.exports = class App {
 	constructor() {
 		this[provider] = express()
 	}
