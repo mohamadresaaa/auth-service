@@ -1,13 +1,13 @@
-import { apiError404, apiErrorHandler } from "./middleware/errorHandle"
-import { createServer } from "http"
-import { json, urlencoded } from "body-parser"
-import contentType from "./middleware/contentType"
-import cors from "cors"
-import express from "express"
-import helmet from "helmet"
-import mongoose from "mongoose"
-import morgan from "morgan"
-import routes from "./routes"
+const { apiError404, apiErrorHandler } = require("./middleware/errorHandle")
+const { createServer } = require("http")
+const { json, urlencoded } = require("body-parser")
+const contentType = require("./middleware/contentType")
+const cors = require("cors")
+const express = require("express")
+const helmet = require("helmet")
+const mongoose = require("mongoose")
+const morgan = require("morgan")
+const routes = require("./routes")
 
 /** @define Private properties and methods */
 const configuration = Symbol("Server packages configuration")

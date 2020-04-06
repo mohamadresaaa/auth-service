@@ -1,4 +1,4 @@
-import App from "./app"
+const App = require("./app")
 
 // Set global config
 global.config = require("../config")

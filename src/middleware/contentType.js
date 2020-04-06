@@ -1,11 +1,11 @@
-import { ErrorMessage } from "../lib/messages"
+const { ErrorMessage } = require("../lib/messages")
 
 /** Just allow application/json accepts
  * @param req
  * @param res
  * @param next
  */
-export default (req, _res, next) => {
+module.exports = (req, _res, next) => {
 	if (req.accepts("application/json")) {
 		return next()
 	}

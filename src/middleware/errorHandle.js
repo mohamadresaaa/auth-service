@@ -1,8 +1,8 @@
-import { unlinkSync } from "fs"
-import { ErrorMessage, PublicErrorMessage } from "../lib/messages"
+const { unlinkSync } = require("fs")
+const { ErrorMessage, PublicErrorMessage } = require("../lib/messages")
 
 // eslint-disable-next-line no-unused-vars
-export const apiErrorHandler = (error, req, res, next) => {
+const apiErrorHandler = (error, req, res, next) => {
 	if (req.file) unlinkSync(req.file.path)
 
 	switch (process.env.NODE_ENV) {
@@ -18,10 +18,12 @@ export const apiErrorHandler = (error, req, res, next) => {
 	}
 }
 
-export const apiError404 = (req, res, next) => {
+const apiError404 = (req, res, next) => {
 	try {
 		throw new PublicErrorMessage(ErrorMessage.errNotFound())
 	} catch (error) {
 		next(error)
 	}
 }
+
+module.exports = { apiError404, apiErrorHandler }
