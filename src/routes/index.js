@@ -1,8 +1,8 @@
 const router = require("express").Router()
 
 // Importing routes
-import account from "./account"
-import auth from "./auth"
+const account = require("./account")
+const auth = require("./auth")
 
 // Using routes
 router.use("/account", account)
