@@ -1,5 +1,6 @@
 module.exports = {
 	"env": {
+		"commonjs": true,
 		"es6": true,
 		"node": true
 	},
@@ -27,6 +28,7 @@ module.exports = {
 		"semi": [
 			"error",
 			"never"
-		]
+		],
+		"sort-keys": "error"
 	}
 }
