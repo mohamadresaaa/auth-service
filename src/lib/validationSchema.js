@@ -15,4 +15,10 @@ const register = joi.object().keys({
 	username: joi.string().required().regex(/^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,}$/).message("invalid username")
 })
 
-module.exports = { login, passwordRecovery, register  }
+const resetPassword = joi.object().keys({
+	code: joi.string().required(),
+	confirmPassword: joi.string().valid(joi.ref("password")).messages({ "any.only": "confirm password must match password" }),
+	password: joi.string().min(8).required()
+})
+
+module.exports = { login, passwordRecovery, register, resetPassword }
