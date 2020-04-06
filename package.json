@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "babel-watch -L src",
+    "watch": "nodemon src",
     "lint": "npx eslint --fix ./"
   },
   "repository": {
