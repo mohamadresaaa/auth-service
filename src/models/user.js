@@ -98,7 +98,7 @@ userSchema.methods.comparePassword = async function (password) {
  * @param {object} device
  * @return {string} token
  */
-userSchema.methods.generateSession = async function (ip, device, geolocation) {
+userSchema.methods.generateSession = async function (ip, device) {
 	// Generate jwt token
 	const token = sign({
 		iss: "jraw",
@@ -109,7 +109,6 @@ userSchema.methods.generateSession = async function (ip, device, geolocation) {
 	await new Session({
 		device,
 		expiryDate: new Date(new Date().setDate(new Date().getDate() + 30)),
-		geolocation,
 		ip,
 		token,
 		user: this.id
@@ -117,6 +116,26 @@ userSchema.methods.generateSession = async function (ip, device, geolocation) {
 
 	// Return jwt token
 	return token
+}
+
+/** Convert and customize user information
+ * @param {string} token
+ * @return {object} user
+ */
+userSchema.methods.toAuthJson = function (token) {
+	return {
+		token,
+		user: {
+			avatar: this.avatar,
+			bio: this.bio,
+			birthday: this.birthday ? this.birthday.toISOString().slice(0, 10) : this.birthday,
+			email: this.email,
+			firstName: this.firstName,
+			lastName: this.lastName,
+			roles: this.roles,
+			username: this.username
+		}
+	}
 }
 
 module.exports = model("User", userSchema)
