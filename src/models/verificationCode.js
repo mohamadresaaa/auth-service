@@ -1,9 +1,9 @@
 const { Schema, model } = require("mongoose")
-const { v5 } = require("uuid")
+const { v4 } = require("uuid")
 
 const verificationCodeSchema = new Schema({
 	code: {
-		default: v5,
+		default: v4,
 		required: true,
 		type: String,
 		unique: true
