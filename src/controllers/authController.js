@@ -3,7 +3,7 @@ const baseController = require("./baseController")
 module.exports = new class AuthController extends baseController {
 	async login(req, res, next) {
 		try {
-			res.send("login")
+			await this[Symbol.for("services")].auth.login(this, req, res)
 		} catch (error) {
 			next(error)
 		}
