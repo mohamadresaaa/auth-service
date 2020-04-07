@@ -6,6 +6,7 @@ const cors = require("cors")
 const device = require("./middleware/device")
 const express = require("express")
 const helmet = require("helmet")
+const ipAddress = require("./middleware/ipAddress")
 const mongoose = require("mongoose")
 const morgan = require("morgan")
 const routes = require("./routes")
@@ -60,7 +61,7 @@ module.exports = class App {
 
 	/** Setup and using packages
 	 * @private
-	 * @package helmet, cors, body-parser, contentType, device, morgan
+	 * @package helmet, cors, body-parser, contentType, device, ipAddress, morgan
 	 */
 	[configuration]() {
 		this[provider].use(helmet())
@@ -75,6 +76,7 @@ module.exports = class App {
 		}))
 		this[provider].use(contentType)
 		this[provider].use(device)
+		this[provider].use(ipAddress)
 
 		if (process.env.NODE_ENV !== "production") {
 			this[provider].use(morgan("dev"))
