@@ -29,6 +29,7 @@ module.exports = {
 			"error",
 			"never"
 		],
-		"sort-keys": "error"
+		"sort-keys": "error",
+		"no-useless-catch": 0
 	}
 }
