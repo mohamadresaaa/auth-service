@@ -20,10 +20,6 @@ const userSchema = new Schema({
 		type: String,
 		unique: true
 	},
-	firstName: {
-		default: null,
-		type: String
-	},
 	isTwoFactorAuth: {
 		default: false,
 		type: Boolean
@@ -32,7 +28,7 @@ const userSchema = new Schema({
 		default: null,
 		type: String
 	},
-	lastName: {
+	name: {
 		default: null,
 		type: String
 	},
