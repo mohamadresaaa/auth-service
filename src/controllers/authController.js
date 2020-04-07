@@ -11,7 +11,7 @@ module.exports = new class AuthController extends baseController {
     
 	async passwordRecovery(req, res, next) {
 		try {
-			res.send("passwordRecovery")
+			await this[Symbol.for("services")].auth.passwordRecovery(this, req.body, res)
 		} catch (error) {
 			next(error)
 		}
