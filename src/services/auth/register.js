@@ -9,13 +9,18 @@
  */
 module.exports = async (controller, data, res) => {
 	try {
-		// User Model
-		const { User } = controller[Symbol.for("models")]
+		// User, VerificationCode Model
+		const { User, VerificationCode } = controller[Symbol.for("models")]
 
 		// Create new user
 		const newUser = await new User({ ...data }).save()
 
 		// Create a verification code for account activation
+		const newVerificationCode = await new VerificationCode({
+			expiryDate: new Date(new Date().setDate(new Date().getDate() + 1)),
+			for: "Account activation",
+			user: newUser.id
+		}).save()
 
 		// Send verification code to mail service
 
