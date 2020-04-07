@@ -19,7 +19,7 @@ module.exports = new class AuthController extends baseController {
     
 	async register(req, res, next) {
 		try {
-			res.send("register")
+			await this[Symbol.for("services")].auth.register(this, req.body, res)
 		} catch (error) {
 			next(error)
 		}

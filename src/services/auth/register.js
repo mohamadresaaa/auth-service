@@ -20,9 +20,8 @@ module.exports = async (controller, data, res) => {
 		// Send verification code to mail service
 
 		// Return info message
-		return controller.infoMessage(res, {
-			message: "Please refer to your email for activation",
-			status: 200
+		return controller.infoMessage(res, 200, {
+			message: "Please refer to your email for activation"
 		})
 	} catch (error) {
 		throw error
