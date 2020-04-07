@@ -1,6 +1,8 @@
 const { compare, hash, genSaltSync } = require("bcrypt")
 const { ErrorMessage } = require("../lib/messages")
 const { Schema, model } = require("mongoose")
+const { sign } = require("jsonwebtoken")
+const Session = require("./session")
 
 const userSchema = new Schema({
 	avatar: {
@@ -82,5 +84,13 @@ userSchema.post("save", function (error, doc, next) {
 		next()
 	}
 })
+
+/** Compare passwords
+ * @param {string} password
+ * @return true/false
+ */
+userSchema.methods.comparePassword = async function (password) {
+	return compare(password, this.password)
+}
 
 module.exports = model("User", userSchema)
