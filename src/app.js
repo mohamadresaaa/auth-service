@@ -3,6 +3,7 @@ const { createServer } = require("http")
 const { json, urlencoded } = require("body-parser")
 const contentType = require("./middleware/contentType")
 const cors = require("cors")
+const device = require("./middleware/device")
 const express = require("express")
 const helmet = require("helmet")
 const mongoose = require("mongoose")
@@ -59,7 +60,7 @@ module.exports = class App {
 
 	/** Setup and using packages
 	 * @private
-	 * @package helmet, cors, body-parser, contentType, morgan
+	 * @package helmet, cors, body-parser, contentType, device, morgan
 	 */
 	[configuration]() {
 		this[provider].use(helmet())
@@ -73,6 +74,7 @@ module.exports = class App {
 			extended: true
 		}))
 		this[provider].use(contentType)
+		this[provider].use(device)
 
 		if (process.env.NODE_ENV !== "production") {
 			this[provider].use(morgan("dev"))
