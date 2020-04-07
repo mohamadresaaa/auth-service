@@ -47,7 +47,10 @@ module.exports = class App {
 	[setupMongodb]() {
 		mongoose.Promise = global.Promise
 		mongoose.connect(config[Symbol.for("database url")], {
-			useNewUrlParser: true
+			useCreateIndex: true,
+			useFindAndModify: false,
+			useNewUrlParser: true,
+			useUnifiedTopology: true
 		},
 		err => {
 			err ? console.log(err.message) : console.log("Database connected")
