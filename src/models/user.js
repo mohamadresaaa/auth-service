@@ -1,3 +1,4 @@
+const { ErrorMessage } = require("../lib/messages")
 const { Schema, model } = require("mongoose")
 
 const userSchema = new Schema({
@@ -59,5 +60,14 @@ const userSchema = new Schema({
 userSchema.index({ email: 1 })
 userSchema.index({ username: 1 })
 userSchema.index({ createdAt: -1 })
+
+// Manage and prevent copy information from being imported email & username
+userSchema.post("save", function (error, doc, next) {
+	if (error.name === "MongoError" && error.code === 11000) {
+		next(new ErrorMessage("Exists Data", `${error.keyPattern.username ? "Username" : "Email"} is already`, 422))
+	} else {
+		next()
+	}
+})
 
 module.exports = model("User", userSchema)
