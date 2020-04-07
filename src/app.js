@@ -46,7 +46,7 @@ module.exports = class App {
 	 */
 	[setupMongodb]() {
 		mongoose.Promise = global.Promise
-		mongoose.connect("", {
+		mongoose.connect(config[Symbol.for("database url")], {
 			useNewUrlParser: true
 		},
 		err => {
