@@ -7,7 +7,7 @@ const { ErrorMessage } = require("../../lib/messages")
  * @param {string} ipAddress from req.ipAddress
  * @param {string} device from req.device
  * @param {object} res from express
- * @returns {response} message and user
+ * @returns {response} user and token
  */
 
 module.exports = async (controller, { body: { email, password }, ipAddress, device }, res) => {
@@ -51,8 +51,7 @@ module.exports = async (controller, { body: { email, password }, ipAddress, devi
 
 				// Otherwise, generate jwt token and save to session, return info message and user
 				return controller.infoMessage(res, 200, {
-					message: "Sign in successfully completed",
-					properties: { ...user.toAuthJson(await user.generateSession(ipAddress, device)) }
+					...user.toAuthJson(await user.generateSession(ipAddress, device))
 				})
 			}
 
