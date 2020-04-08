@@ -13,6 +13,10 @@ const passwordRecovery = joi.object().keys({
 	email: joi.string().required()
 })
 
+const reactivation = joi.object().keys({
+	email: joi.string().required()
+})
+
 const register = joi.object().keys({
 	email: joi.string().email({ minDomainSegments: 2 }).required(),
 	password: joi.string().min(8).required(),
@@ -25,4 +29,4 @@ const resetPassword = joi.object().keys({
 	password: joi.string().min(8).required()
 })
 
-module.exports = { deactivation, login, passwordRecovery, register, resetPassword }
+module.exports = { deactivation, login, passwordRecovery, reactivation, register, resetPassword }
