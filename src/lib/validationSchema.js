@@ -1,5 +1,9 @@
 const joi = require("@hapi/joi")
 
+const deactivation = joi.object().keys({
+	password: joi.string().required()
+})
+
 const login = joi.object().keys({
 	email: joi.string().required(),
 	password: joi.string().required()
@@ -21,4 +25,4 @@ const resetPassword = joi.object().keys({
 	password: joi.string().min(8).required()
 })
 
-module.exports = { login, passwordRecovery, register, resetPassword }
+module.exports = { deactivation, login, passwordRecovery, register, resetPassword }
