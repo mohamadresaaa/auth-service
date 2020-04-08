@@ -1,4 +1,4 @@
-const { ErrorMessage } = require("../../../lib/messages")
+const { ErrorMessage } = require("../../lib/messages")
 
 /** User account activation
  * @param {object} controller
