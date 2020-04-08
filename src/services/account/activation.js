@@ -6,7 +6,7 @@ const { ErrorMessage } = require("../../lib/messages")
  * @param {object} res from express
  * @returns {response} message and user
  */
-module.exports = async (controller, code, res) => {
+module.exports = async (controller, { code }, res) => {
 	try {
 		// VerificationCode model
 		const { VerificationCode } = controller[Symbol.for("models")]

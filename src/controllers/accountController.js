@@ -3,7 +3,7 @@ const baseController = require("./baseController")
 module.exports = new class AccountController extends baseController {
 	async activation(req, res, next) {
 		try {
-			await this[Symbol.for("services")].account.activation(this, req.body.code, res)
+			await this[Symbol.for("services")].account.activation(this, req.body, res)
 		} catch (error) {
 			next(error)
 		}
