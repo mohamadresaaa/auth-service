@@ -130,8 +130,7 @@ userSchema.methods.toAuthJson = function (token) {
 			bio: this.bio,
 			birthday: this.birthday ? this.birthday.toISOString().slice(0, 10) : this.birthday,
 			email: this.email,
-			firstName: this.firstName,
-			lastName: this.lastName,
+			name: this.name,
 			roles: this.roles,
 			username: this.username
 		}
