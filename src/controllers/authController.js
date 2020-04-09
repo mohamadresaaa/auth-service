@@ -8,6 +8,14 @@ module.exports = new class AuthController extends baseController {
 			next(error)
 		}
 	}
+
+	async logout (req, res, next) {
+		try {
+			await this[Symbol.for("services")].auth.logout(this, req.session, res)
+		} catch (error) {
+			next(error)
+		}
+	}
     
 	async passwordRecovery(req, res, next) {
 		try {
