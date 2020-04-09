@@ -1,7 +1,7 @@
 const router = require("express").Router()
 
 // Controllers
-const { user } = require("../../controllers")
+const { user } = require("../controllers")
 
 // Middleware
 const validator = require("../middleware/validator")
