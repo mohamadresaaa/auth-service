@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/mohamadresaaa/jraw-auth-service#readme",
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.3"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
