@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "nodemon src",
-    "lint": "npx eslint --fix ./"
+    "lint": "npx eslint --fix ./",
+    "start": "node src",
+    "watch": "nodemon src"
   },
   "repository": {
     "type": "git",
