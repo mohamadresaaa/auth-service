@@ -3,7 +3,7 @@ const baseController = require("./baseController")
 module.exports = new class AccountController extends baseController {
 	async activation(req, res, next) {
 		try {
-			await this[Symbol.for("services")].account.activation(this, req.body, res)
+			await this[Symbol.for("actions")].account.activation(this, req.body, res)
 		} catch (error) {
 			next(error)
 		}
@@ -11,7 +11,7 @@ module.exports = new class AccountController extends baseController {
     
 	async deactivation(req, res, next) {
 		try {
-			await this[Symbol.for("services")].account.deactivation(this, req, res)
+			await this[Symbol.for("actions")].account.deactivation(this, req, res)
 		} catch (error) {
 			next(error)
 		}
@@ -19,7 +19,7 @@ module.exports = new class AccountController extends baseController {
     
 	async reactivation(req, res, next) {
 		try {
-			await this[Symbol.for("services")].account.reactivation(this, req.body, res)
+			await this[Symbol.for("actions")].account.reactivation(this, req.body, res)
 		} catch (error) {
 			next(error)
 		}

@@ -1,5 +1,5 @@
 const autoBind = require("auto-bind")
-const services = require("../services")
+const actions = require("../actions")
 const models = require("../models")
 
 module.exports = class BaseController {
@@ -10,8 +10,8 @@ module.exports = class BaseController {
 		// Set models
 		this[Symbol.for("models")] = models
 
-		// Set services
-		this[Symbol.for("services")] = services
+		// Set actions
+		this[Symbol.for("actions")] = actions
 	}
 
 	/** Show public info message

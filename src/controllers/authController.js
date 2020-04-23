@@ -3,7 +3,7 @@ const baseController = require("./baseController")
 module.exports = new class AuthController extends baseController {
 	async login(req, res, next) {
 		try {
-			await this[Symbol.for("services")].auth.login(this, req, res)
+			await this[Symbol.for("actions")].auth.login(this, req, res)
 		} catch (error) {
 			next(error)
 		}
@@ -11,7 +11,7 @@ module.exports = new class AuthController extends baseController {
 
 	async logout (req, res, next) {
 		try {
-			await this[Symbol.for("services")].auth.logout(this, req.session, res)
+			await this[Symbol.for("actions")].auth.logout(this, req.session, res)
 		} catch (error) {
 			next(error)
 		}
@@ -19,7 +19,7 @@ module.exports = new class AuthController extends baseController {
     
 	async passwordRecovery(req, res, next) {
 		try {
-			await this[Symbol.for("services")].auth.passwordRecovery(this, req.body, res)
+			await this[Symbol.for("actions")].auth.passwordRecovery(this, req.body, res)
 		} catch (error) {
 			next(error)
 		}
@@ -27,7 +27,7 @@ module.exports = new class AuthController extends baseController {
     
 	async register(req, res, next) {
 		try {
-			await this[Symbol.for("services")].auth.register(this, req.body, res)
+			await this[Symbol.for("actions")].auth.register(this, req.body, res)
 		} catch (error) {
 			next(error)
 		}
@@ -35,7 +35,7 @@ module.exports = new class AuthController extends baseController {
     
 	async resetPassword(req, res, next) {
 		try {
-			await this[Symbol.for("services")].auth.resetPassword(this, req.body, res)
+			await this[Symbol.for("actions")].auth.resetPassword(this, req.body, res)
 		} catch (error) {
 			next(error)
 		}
@@ -43,7 +43,7 @@ module.exports = new class AuthController extends baseController {
 
 	async verifyCode(req, res, next) {
 		try {
-			await this[Symbol.for("services")].auth.verifyCode(this, req.params.code, res)
+			await this[Symbol.for("actions")].auth.verifyCode(this, req.params.code, res)
 		} catch (error) {
 			next(error)
 		}

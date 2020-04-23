@@ -1,20 +1,20 @@
 const { readdirSync } = require("fs")
 const { resolve } = require("path")
 
-const services = {}
+const actions = {}
 
 // Read and find directories
 const findDirectories = readdirSync(resolve(__dirname)).filter((item) => !item.match("index.js"))
 
 // Convert directories to object
 for (const directory of findDirectories)
-	services[directory] = {}
+	actions[directory] = {}
 
 
 // Read files of directory
-Object.keys(services).map(key => {
+Object.keys(actions).map(key => {
 	for (const file of readdirSync(resolve(__dirname, key)))
-		services[key][file.replace(".js", "")] = require(resolve(__dirname, key, file))
+		actions[key][file.replace(".js", "")] = require(resolve(__dirname, key, file))
 })
 
-module.exports = services
+module.exports = actions
